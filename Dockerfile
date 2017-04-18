@@ -6,5 +6,5 @@ ADD requirements.txt /code/
 RUN pip3 install -r requirements.txt
 ADD . /code/
 
-# RUN python the_future/manage.py makemigrations
-# RUN python the_future/manage.py migrate
+# RUN python game/manage.py makemigrations
+# RUN python game/manage.py migrate
