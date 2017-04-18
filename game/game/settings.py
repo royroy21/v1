@@ -63,7 +63,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'the_future.urls'
+ROOT_URLCONF = 'game.urls'
 
 TEMPLATES = [
     {
@@ -83,7 +83,7 @@ TEMPLATES = [
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
-WSGI_APPLICATION = 'the_future.wsgi.application'
+WSGI_APPLICATION = 'game.wsgi.application'
 
 
 # Database

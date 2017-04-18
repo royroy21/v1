@@ -7,21 +7,19 @@ from player.forms import PlayerForm
 from player.models import Faction, Player
 
 
-PLAYER_FIELDS = {
-    'account_url': 'account.detail_url',
-    'title': 'title',
-    'first_name': 'first_name',
-    'last_name': 'last_name',
-    'faction_url': 'faction.detail_url',
-}
-PLAYER_FIELDS.update(COMMON_PREPARE_FIELDS)
-
-
 class PlayerResource(GenericCrudResource):
     model_cls = Player
     form_cls = PlayerForm
 
-    preparer = FieldsPreparer(fields=PLAYER_FIELDS)
+    player_fields = {
+        'account_url': 'account.detail_url',
+        'title': 'title',
+        'first_name': 'first_name',
+        'last_name': 'last_name',
+        'faction_url': 'faction.detail_url',
+    }
+    player_fields.update(COMMON_PREPARE_FIELDS)
+    preparer = FieldsPreparer(fields=player_fields)
 
 
 class FactionResource(GenericReadOnlyResource):
