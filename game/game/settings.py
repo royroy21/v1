@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'account',
     'custom_auth',
     'hero',
-    'player.apps.PlayerConfig',
+    'player',
+    'utils',
 ]
 
 MIDDLEWARE_CLASSES = [
