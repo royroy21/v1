@@ -21,5 +21,13 @@ class PlayerFactory(CommonFields):
     last_name = factory.Faker('last_name')
     faction = factory.SubFactory(FactionFactory)
 
+    # in game
+    active_for_game = random.choice([True, False])
+
+    # position defaults to London
+    ip_address = '192.168.0.1'
+    latitude = '51.5073509'
+    longitude = '-0.12775829999998223'
+
     class Meta:
         model = Player

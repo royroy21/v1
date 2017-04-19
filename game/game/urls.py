@@ -19,7 +19,6 @@ from jwt_auth.views import obtain_jwt_token
 
 
 from account.api import AccountResource
-from hero.api import HeroResource
 from player.api import FactionResource, PlayerResource
 
 
@@ -31,9 +30,6 @@ urlpatterns = [
 urlpatterns += patterns('',
     url(r'{}'.format(AccountResource.model_cls.get_url_string()),
         include(AccountResource.urls()),
-    ),
-    url(r'{}'.format(HeroResource.model_cls.get_url_string()),
-        include(HeroResource.urls()),
     ),
     url(r'{}'.format(FactionResource.model_cls.get_url_string()),
         include(FactionResource.urls()),

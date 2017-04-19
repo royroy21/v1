@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'django_nose',
     'account',
     'custom_auth',
-    'hero',
     'player',
     'utils',
 ]

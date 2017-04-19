@@ -17,6 +17,10 @@ class PlayerResource(GenericCrudResource):
         'first_name': 'first_name',
         'last_name': 'last_name',
         'faction_url': 'faction.detail_url',
+        'active_for_game': 'active_for_game',
+        'ip_address': 'ip_address',
+        'latitude': 'latitude',
+        'longitude': 'longitude',
     }
     player_fields.update(COMMON_PREPARE_FIELDS)
     preparer = FieldsPreparer(fields=player_fields)
