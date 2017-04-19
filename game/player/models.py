@@ -25,6 +25,14 @@ class Player(CommonFields):
     last_name = models.CharField(max_length=255)
     faction = models.ForeignKey(Faction, blank=True, null=True)
 
+    # in game
+    active_for_game = models.BooleanField(default=False)
+
+    # position
+    ip_address = models.CharField(max_length=255, blank=True, null=True)
+    latitude = models.CharField(max_length=255, blank=True, null=True)
+    longitude = models.CharField(max_length=255, blank=True, null=True)
+
     def __str__(self):
         faction_name = self.faction.name if self.faction else None
         return '({}) {} {} {}'.format(
