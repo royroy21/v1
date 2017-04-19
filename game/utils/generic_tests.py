@@ -53,12 +53,7 @@ class GenericDetailListTests(CreateUser):
         """Converts fields in data so to be JSON friendly
         """
         for field in field_array:
-            if isinstance(data[field], list):
-                data['{}_urls'.format(field)] = [d.detail_url
-                                                 for d in data[field]]
-            else:
-                data['{}_url'.format(field)] = data[field].detail_url
-
+            data['{}_url'.format(field)] = data[field].detail_url
             del data[field]
 
         return data
@@ -75,25 +70,17 @@ class GenericDetailListTests(CreateUser):
                         self.assertFalse(v)
                     else:
                         self.assertEquals(v, obj_value.detail_url)
-                # testing many to many fields
-                elif k.endswith('_urls'):
-                    obj_value = getattr(self.test_obj, k.replace('_urls', ''))
-                    self.assertEqual(
-                        [o.detail_url for o in obj_value.all()], v
-                    )
                 # self vs detail_url
                 elif k == 'self':
                     self.assertEquals(
-                        str(v), str(getattr(self.test_obj, 'detail_url'))
-                    )
+                        str(v), str(getattr(self.test_obj, 'detail_url')))
                 else:
                     self.fail('problem testing "{}" field'.format(k))
 
     def test_detail(self):
         resp = self.client.get(
             '{}{}/'.format(self.url, self.test_obj.id),
-            HTTP_AUTHORIZATION='Bearer {}'.format(self.token)
-        )
+            HTTP_AUTHORIZATION='Bearer {}'.format(self.token))
 
         self.assertEqual(resp.status_code, 200)
         resp_data = json.loads(resp.content.decode('utf8'))
@@ -101,8 +88,7 @@ class GenericDetailListTests(CreateUser):
 
     def test_list(self):
         resp = self.client.get(
-            self.url, HTTP_AUTHORIZATION='Bearer {}'.format(self.token)
-        )
+            self.url, HTTP_AUTHORIZATION='Bearer {}'.format(self.token))
 
         self.assertEqual(resp.status_code, 200)
         resp_data = json.loads(resp.content.decode('utf8'))['objects'][0]
